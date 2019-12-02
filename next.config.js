@@ -4,8 +4,7 @@ const withMDX = require('@next/mdx');
 const withCoffeescript = require('next-coffeescript');
 
 const cfg = {
-  cssModules: true,
-  pageExtensions: ['js', 'jsx', 'md', 'mdx','coffee']
+  cssModules: true
 };
 
-module.exports = withMDX(withCoffeescript(withCSS(withStylus(cfg))));
+module.exports = withCoffeescript(withCSS(withStylus(cfg)));
