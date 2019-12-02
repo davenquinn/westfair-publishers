@@ -1,7 +1,6 @@
-import h from '@macrostrat/hyper'
+import h from '../styles'
 import {Helmet} from 'react-helmet'
 import {SiteTitle, Nav} from './nav'
-import styles from './main.styl'
 
 BasePage = (props)->
   {children, rest...} = props
@@ -28,3 +27,4 @@ HTMLPage = (props)->
   ]
 
 export {BasePage, HTMLPage}
+

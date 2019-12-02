@@ -25,6 +25,7 @@
     "stylus": "^0.54.7"
   },
   "devDependencies": {
+    "babel-plugin-root-import": "^6.4.1",
     "babel-plugin-static-fs": "^3.0.0"
   }
 }

@@ -2,7 +2,7 @@ import React, {Children} from 'react'
 import Link from 'next/link'
 import { useRouter } from 'next/router'
 import classNames from 'classnames'
-import h from '@macrostrat/hyper'
+import h from '../styles'
 
 links = [
   { href: '/about', label: 'About' },
