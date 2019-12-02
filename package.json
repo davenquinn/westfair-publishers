@@ -22,5 +22,8 @@
     "react": "^16.10.2",
     "react-dom": "^16.10.2",
     "stylus": "^0.54.7"
+  },
+  "devDependencies": {
+    "babel-plugin-static-fs": "^3.0.0"
   }
 }
