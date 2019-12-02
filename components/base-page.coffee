@@ -1,5 +1,6 @@
 import h from '@macrostrat/hyper'
 import {Helmet} from 'react-helmet'
+import {SiteTitle, Nav} from './nav'
 import styles from './main.styl'
 
 BasePage = (props)->
@@ -9,7 +10,15 @@ BasePage = (props)->
       <meta charset="utf-8" />
       <title>Westfair Publishers — Always With Spirit</title>
     ]
-    children
+    h 'div.wrap', [
+      h 'header', [
+        h SiteTitle, "Always With Spirit"
+        h Nav
+      ]
+      h 'div.main', [
+        children
+      ]
+    ]
   ]
 
 HTMLPage = (props)->
