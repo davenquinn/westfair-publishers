@@ -1,24 +1,63 @@
 :global
-  @require "./indesign-imported"
+  @require "./global"
 
 .wrap
   width: 50em
   margin: 1em auto
 
+*
+  font-family: 'EB Garamond', serif
+  font-size 16px
+
+main_blue=#0079c3
+
+h2
+  font-size 1.5rem
+  color main_blue
+
+h3
+  color main_blue
+
 header
   a
     text-decoration none
+    &:visited
+      color #0b5c9f
   h1.site-title
-    font-size 1.5em
+    font-size 3em
+    color main_blue
+    text-transform uppercase
+    margin-bottom 0px
+    margin-top 0px
   nav ul
     list-style-type none
     display flex
     flex-direction row
     padding-left 0
-    li a
+    a
       margin-right 1em
       display block
       padding 0.2em 1em
-      background-color lighten(dodgerblue, 80%)
-      border-radius 4px
+      border 1px solid #0079c3
+      border-radius 2px
+    :global(a.active)
+      background-color #64a4ef
+      color white
 
+footer
+  margin-top 2em
+  color #666
+  display flex
+  flex-flow row wrap
+  p
+    font-size 13px
+    flex-grow 1
+  p.address
+    flex-grow 0
+
+div.wrap
+  display flex
+  flex-direction column
+  min-height 100vh
+  div.main
+    flex-grow 1
