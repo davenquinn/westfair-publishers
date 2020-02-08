@@ -4,6 +4,8 @@ import {
   TextInputField, SegmentedControl,
   Button, Card} from 'evergreen-ui'
 import {Formik, Form, Field, useField, ErrorMessage} from 'formik'
+import {post} from 'axios'
+import {useState} from 'react'
 
 LabeledTextArea = (props)->
   {label, placeholder, name} = props
@@ -33,9 +35,11 @@ SegmentedField = (props)->
 TextInput = (props)->
   h(TextInputField, {marginBottom: 8, props...})
 
-GrandparentNameField = (props)->
-
 ContactFormInner = (props)->
+  {isValid_} = props
+  fc = props.values.familyConnection
+
+  console.log props
   <Form className="contact-form">
     <Field as={TextInput}
       label="Full name"
@@ -56,6 +60,16 @@ ContactFormInner = (props)->
       name="phoneNumber"
       placeholder="Enter your phone number"
     />
+    <div className="numCopies">
+      <Field as={TextInput}
+        className="numCopies"
+        label="Copies requested"
+        required
+        width={50}
+        name="numCopies"
+        placeholder="#"
+      />
+    </div>
     <Card
       className="family-connection" background="tint2"
       padding="1em" marginY="1em">
@@ -64,32 +78,25 @@ ContactFormInner = (props)->
         name="familyConnection"
         options={["Grandmother", "Grandfather"]}
       />
+      <div className={if fc? then "control shown" else "control hidden"}>
+        <Field as={TextInput}
+          label="#{fc or "Grandmother"} name"
+          required
+          name="grandparentName"
+          placeholder={"Enter your #{fc or "Grandmother"}'s name"}
+        />
+      </div>
       <Field as={TextInput}
-        label="Grandparent name"
-        required
-        name="grandparentName"
-        placeholder="Enter your grandparents' name"
-      />
-      <Field as={TextInput}
-        label="Further description"
+        label="Further description (optional)"
         name="familyConnectionDescription"
         placeholder="Further describe your family connection"
       />
     </Card>
-    <div className="numCopies">
-      <Field as={TextInput}
-        className="numCopies"
-        label="Number of copies requested"
-        required
-        width={50}
-        name="numCopies"
-        placeholder="#"
-      />
-    </div>
     <Field as={LabeledTextArea} label="Questions or comments" name="comments" />
     <Card marginTop="1em">
       <Button type="submit" iconAfter="envelope"
-        appearance="primary" intent="success">Send</Button>
+        disabled={not props.isValid or props.isSubmitted}
+        appearance="primary" intent="success">{if props.isSubmitted then "Successfully sent!" else "Send"}</Button>
     </Card>
   </Form>
 
@@ -100,19 +107,28 @@ ContactForm = (props)->
     phoneNumber: ""
     grandparentName: ""
     familyConnectionDescription: ""
-    familyConnection: null
+    familyConnection: "Grandmother"
     numCopies: 1
     comment: ""
   }
 
+  [isSubmitted, setSubmitted] = useState(false)
+
   validate = (d)->
-    console.log d
+    errors = {}
+    for field in ['name', 'email', "grandparentName"]
+      if d[field] == ""
+        errors[field] = 'required'
+    return errors
 
-  onSubmit = (d)->
-    console.log d
 
+  onSubmit = (d, {setSubmitting})->
+    res = await post('/api/contact-form', d)
+    setSubmitting(false)
+    if res.response == 200
+      setSubmitted(true)
 
-  h Formik, {initialValues, validate, onSubmit}, ContactFormInner
+  h Formik, {initialValues, validate, onSubmit, isSubmitted}, ContactFormInner
 
 
 export {ContactForm}
