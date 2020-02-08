@@ -1,0 +1,8 @@
+{
+  "env": {
+    "API_KEY": "@mailgun_api_key",
+    "DOMAIN": "@mailgun_domain",
+    "EMAIL_TO": "@mailgun_recipient",
+    "EMAIL_FROM": "@mailgun_sender"
+  }
+}
