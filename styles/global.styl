@@ -1,7 +1,7 @@
+*
+  box-sizing: border-box
+
 .cover-image, .rear-jacket-image
-  max-width 20em
-  float right
-  margin-left 1em
   img
     width 100%
 
@@ -17,22 +17,30 @@ img
 .cover-image img
   border 2px solid #aaa
   border-radius 6px
+  width 100%
+
+.side-content
+  float left
+  width 35%
+  margin-right 2em
+  margin-bottom 1em
+  margin-top 1em
 
 .holiday-message
   border: 3px solid lighten(#ff0053, 90%)
   border-radius 6px
   padding 0.5em 1em
   transition: visibility 0.5s, height 0.5s linear
+  text-align center
   clearfix: after
   .message-body
-    display flex
-    flex-direction: row
     align-items center
     .image-container
       width 10em
-      margin-right 1em
+      margin 0 auto
     img
       width 100%
+      margin-left 1.5em
     p
       flex 1
       font-style italic
@@ -58,3 +66,14 @@ a.button
   font-size 0.8em
   cursor pointer
   float right
+
+.purchase-request-form
+  max-width 60%
+  display block
+  float left
+  .numCopies>div
+    display flex
+    flex-direction row
+    width 100%
+    label
+      flex-grow 1

@@ -2,14 +2,19 @@
   @require "./global"
 
 .wrap
-  width: 50em
+  max-width: 52em
   margin: 1em auto
+  padding: 0 1em
 
 *
-  font-family: 'EB Garamond', serif
-  font-size 16px
+  font-family: 'EB Garamond', Garamond, 'Times New Roman', serif
+  font-size 18px
 
-main_blue=#0079c3
+p,ul,ol
+  line-height 1.5
+  font-size 20px
+
+main_blue=#006fdb
 
 h2
   font-size 1.5rem
@@ -19,6 +24,8 @@ h3,h4,h5,h6
   color main_blue
 
 header
+
+  margin-bottom 1em
   a
     text-decoration none
     &:visited
@@ -39,21 +46,40 @@ header
       display block
       padding 0.2em 1em
       border 1px solid #0079c3
-      border-radius 2px
+      border-radius 4px
     :global(a.active)
       background-color #64a4ef
       color white
+  display flex
+  flex-direction: row
+  img_width=10em
+  .left
+    width img_width
+    height 4em
+    margin-left 1.2em
+    margin-top -1.2em
+    img
+      transform rotate(90deg)
+      height img_width
 
 footer
+  div.right
+    max-width 30em
   margin-top 2em
   color #666
   display flex
-  flex-flow row wrap
+  flex-direction row
+  margin-right -2em
+  justify-content: space-between
+  &>div
+    min-width 20em
+    margin-right 2em
+    &:first-child
+      flex-grow 1
+
   p
-    font-size 13px
-    flex-grow 1
-  p.address
-    flex-grow 0
+    font-size 14px
+    line-height: 1.2
 
 div.wrap
   display flex
@@ -61,3 +87,8 @@ div.wrap
   min-height 100vh
   div.main
     flex-grow 1
+
+ol
+  display block
+  overflow hidden
+  padding-left: 1.5em

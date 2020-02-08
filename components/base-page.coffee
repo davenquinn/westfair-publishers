@@ -13,8 +13,16 @@ BasePage = (props)->
     ]
     h 'div.wrap', [
       h 'header', [
-        h SiteTitle, "Always With Spirit"
-        h Nav
+        h 'div.left', [
+          h 'img', {
+            src: "/assets/always-with-spirit-rear-jacket.svg"
+            alt: "rear-jacket-artwork"
+          }
+        ]
+        h 'div.right', [
+          h SiteTitle, "Always With Spirit"
+          h Nav
+        ]
       ]
       h 'div.main', [
         children
@@ -30,4 +38,3 @@ HTMLPage = (props)->
   ]
 
 export {BasePage, HTMLPage}
-
