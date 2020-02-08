@@ -1,16 +1,21 @@
 import {BasePage} from '../components/base-page'
 import {HolidayMessage} from '../components/holiday-message'
+import {Button} from 'evergreen-ui'
 
 <div className="gift-message">
 <h2>For a family gift...give the gift of family!</h2>
 
-<img src="/assets/gifts.png"></img>
+<img src="/assets/gifts.png" alt="asset-gifts" width={600}></img>
 
 <h2>Narratives for 19 generations, wrapped up in 7 centuries of ancestors.</h2>
 
 <h5>These cousins will be found in the unique
    family history, <em>Always With Spirit</em>.</h5>
 
+
+<Button is="a" href="/about" appearance="primary" intent="primary">Learn more</Button>
+
 </div>
+
 
 export default BasePage

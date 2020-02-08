@@ -36,12 +36,9 @@ TextInput = (props)->
 GrandparentNameField = (props)->
 
 ContactFormInner = (props)->
-  nameWidth = 360
-
   <Form className="contact-form">
     <Field as={TextInput}
       label="Full name"
-      width={nameWidth}
       placeholder="Enter your full name"
       required
       name="name"
@@ -50,7 +47,6 @@ ContactFormInner = (props)->
     <Field as={TextInput}
       label="Email address"
       type="email"
-      width={nameWidth}
       placeholder="Enter your email address"
       required
       name="email"
@@ -58,7 +54,6 @@ ContactFormInner = (props)->
     <Field as={TextInput}
       label="Telephone number (optional)"
       name="phoneNumber"
-      width={nameWidth}
       placeholder="Enter your phone number"
     />
     <Card
@@ -72,7 +67,6 @@ ContactFormInner = (props)->
       <Field as={TextInput}
         label="Grandparent name"
         required
-        width={nameWidth}
         name="grandparentName"
         placeholder="Enter your grandparents' name"
       />

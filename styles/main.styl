@@ -1,14 +1,11 @@
-:global
-  @require "./global"
-
-.wrap
-  max-width: 52em
-  margin: 1em auto
-  padding: 0 1em
-
 *
+  box-sizing: border-box
   font-family: 'EB Garamond', Garamond, 'Times New Roman', serif
   font-size 18px
+
+a
+  &:visited
+    color #0b5c9f
 
 p,ul,ol
   line-height 1.5
@@ -23,63 +20,124 @@ h2
 h3,h4,h5,h6
   color main_blue
 
-header
+img
+  max-width 100%
 
+ol
+  display block
+  overflow hidden
+  padding-left: 1.5em
+
+:global
+  .cover-image, .rear-jacket-image
+    img
+      width 100%
+
+    p.caption
+      font-size 0.9em
+      margin 0
+      color #888
+      font-style italic
+
+  .gift-message
+    text-align: center
+
+  .cover-image img
+    border 2px solid #aaa
+    border-radius 6px
+    width 100%
+
+  .side-content
+    margin-bottom 1em
+    margin-top 1em
+    display none
+
+  .holiday-message
+    border: 3px solid lighten(#ff0053, 90%)
+    border-radius 6px
+    padding 0.5em 1em
+    transition: visibility 0.5s, height 0.5s linear
+    text-align center
+    clearfix: after
+    .message-body
+      align-items center
+      .image-container
+        width 10em
+        margin 0 auto
+      img
+        width 100%
+        margin-left 1.5em
+      p
+        flex 1
+        font-style italic
+        font-size 1.5em
+        color #ff0053
+        margin-top 0
+        margin-bottom 0
+    .message-controls
+      display flex
+      flex-direction row
+      justify-content flex-end
+
+  .purchase-request-form
+    display block
+    .numCopies>div
+      display flex
+      flex-direction row
+      width 100%
+      label
+        flex-grow 1
+  .contact-form
+    margin 0 1em
+    .family-connection
+      margin 1em -1em
+
+
+header
   margin-bottom 1em
   a
     text-decoration none
-    &:visited
-      color #0b5c9f
   h1.site-title
     font-size 3em
     color main_blue
     text-transform uppercase
     margin-bottom 0px
     margin-top 0px
+    text-align center
   nav ul
     list-style-type none
-    display flex
-    flex-direction row
     padding-left 0
+    margin-bottom -0.5em
+    margin-right -1em
+    margin-top 0.8em
     a
       margin-right 1em
       display block
       padding 0.2em 1em
-      border 1px solid #0079c3
-      border-radius 4px
+      border 2px solid main_blue
+      border-radius 6px
+      margin-bottom 0.5em
+      font-style: italic;
     :global(a.active)
       background-color #64a4ef
       color white
-  display flex
-  flex-direction: row
-  img_width=10em
   .left
-    width img_width
-    height 4em
-    margin-left 1.2em
-    margin-top -1.2em
+    height 9em
+    margin-top -0.5em
+    text-align center
     img
       transform rotate(90deg)
-      height img_width
+      height 9em
 
 footer
-  div.right
-    max-width 30em
   margin-top 2em
   color #666
-  display flex
-  flex-direction row
-  margin-right -2em
-  justify-content: space-between
-  &>div
-    min-width 20em
-    margin-right 2em
-    &:first-child
-      flex-grow 1
-
   p
     font-size 14px
     line-height: 1.2
+
+.wrap
+  padding: 0 1em
 
 div.wrap
   display flex
@@ -88,7 +146,48 @@ div.wrap
   div.main
     flex-grow 1
 
-ol
-  display block
-  overflow hidden
-  padding-left: 1.5em
+
+
+@media screen and (min-width: 600px)
+  :global
+    .side-content
+      margin-right 2em
+      float left
+      width 35%
+      display: block
+    .purchase-request-form
+      max-width 60%
+      float left
+      input
+        max-width 100
+
+  footer
+    div.right
+      max-width 30em
+    display flex
+    flex-direction row
+    margin-right -2em
+    justify-content: space-between
+    &>div
+      min-width 20em
+      margin-right 2em
+      &:first-child
+        flex-grow 1
+
+  header
+    display flex
+    flex-direction: row
+    .left
+      width 10em
+      margin-right 2em
+      margin-left -0.7em
+    nav ul
+      display flex
+      flex-direction row
+      padding-left 0
+
+  .wrap
+    width 100vw
+    max-width: 52em
+    margin: 1em auto
+    padding: 0 1em
