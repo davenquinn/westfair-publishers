@@ -5,7 +5,7 @@ import classNames from 'classnames'
 import h from '../styles'
 
 links = [
-  { href: '/', label: 'About' },
+  { href: '/about', label: 'About'}
   { href: '/how-to-order', label: 'How to order' },
   { href: '/contact', label: 'Contact' },
 ].map (link)->
