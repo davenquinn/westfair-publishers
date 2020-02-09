@@ -5,24 +5,22 @@ const withCoffeescript = require('next-coffeescript');
 
 let env = null
 // For production our env vars should be provided by ZEIT NOW
-if (process.env.NODE_ENV == 'development') {
-  require("dotenv").config()
-  // Assemble environment from process environment
-  const keys = ["API_KEY", "DOMAIN", "EMAIL_TO", "EMAIL_FROM"]
-  env = Object.fromEntries(keys.map(k=> [k, process.env[k]]));
-}
 
-
-
-const baseCfg = {
+let baseCfg = {
   cssModules: true,
   cssLoaderOptions: {
     importLoaders: 1,
     localIdentName: "[local]___[hash:base64:5]",
   },
   pageExtensions:  ['js', 'jsx', 'mdx','coffee'],
-  env
 };
+
+if (process.env.NODE_ENV == 'development') {
+  require("dotenv").config()
+  // Assemble environment from process environment
+  const keys = ["API_KEY", "DOMAIN", "EMAIL_TO", "EMAIL_FROM"]
+  baseCfg.env = Object.fromEntries(keys.map(k=> [k, process.env[k]]));
+}
 
 console.log(baseCfg)
 
