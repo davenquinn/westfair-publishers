@@ -59,13 +59,7 @@ api = mailgun {
   domain: process.env.DOMAIN
 }
 
-sendMessage = (data)->
-  new Promise (resolve, reject)->
-    api.messages().send data, (error, body)->
-      reject(error) if error
-      resolve()
-
-export default (req, res) =>
+export default (req, res)->
   res.setHeader('Content-Type', 'application/json')
 
   if req.method != 'POST'
@@ -91,12 +85,10 @@ export default (req, res) =>
   }
 
   try
-    await sendMessage(data)
+    response = await api.messages().send(data)
+    res.statusCode = 200
+    res.end JSON.stringify({ success: true, response })
   catch error
     console.log(error)
     res.statusCode = 500
     res.end JSON.stringify({ success: false, error })
-    return
-
-  res.statusCode = 200
-  res.end JSON.stringify({ success: true })
