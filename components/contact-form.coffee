@@ -2,7 +2,7 @@ import h from '../styles'
 import {
   Pane, Label, Textarea,
   TextInputField, SegmentedControl,
-  Button, Card} from 'evergreen-ui'
+  Button, Card, toaster} from 'evergreen-ui'
 import {Formik, Form, Field, useField, ErrorMessage} from 'formik'
 import {post} from 'axios'
 import {useState} from 'react'
@@ -36,10 +36,9 @@ TextInput = (props)->
   h(TextInputField, {marginBottom: 8, props...})
 
 ContactFormInner = (props)->
-  {isValid_} = props
   fc = props.values.familyConnection
+  console.log props.isValid, props.allowSubmit
 
-  console.log props
   <Form className="contact-form">
     <Field as={TextInput}
       label="Full name"
@@ -95,8 +94,8 @@ ContactFormInner = (props)->
     <Field as={LabeledTextArea} label="Questions or comments" name="comments" />
     <Card marginTop="1em">
       <Button type="submit" iconAfter="envelope"
-        disabled={not props.isValid or props.isSubmitted}
-        appearance="primary" intent="success">{if props.isSubmitted then "Successfully sent!" else "Send"}</Button>
+        disabled={not (props.isValid and props.allowSubmit)}
+        appearance="primary" intent="success">Send</Button>
     </Card>
   </Form>
 
@@ -112,23 +111,44 @@ ContactForm = (props)->
     comment: ""
   }
 
-  [isSubmitted, setSubmitted] = useState(false)
+  [allowSubmit, setAllowSubmit] = useState(false)
 
   validate = (d)->
     errors = {}
+    hasErrors = false
     for field in ['name', 'email', "grandparentName"]
       if d[field] == ""
         errors[field] = 'required'
+        hasErrors = true
+    if not hasErrors
+      setAllowSubmit(true)
     return errors
 
 
   onSubmit = (d, {setSubmitting})->
-    res = await post('/api/contact-form', d)
-    setSubmitting(false)
-    if res.response == 200
-      setSubmitted(true)
+    toaster.notify("Sending your message...")
+    console.log(d)
+    try
+      res = await post('/api/contact-form', d)
+      toaster.closeAll()
+      if res.status == 200
+        setAllowSubmit(false)
+        toaster.success("Message successfully sent!")
+      else
+        throw "Invalid API response"
+    catch err
+      toaster.closeAll()
+      toaster.danger("Error: #{err}")
 
-  h Formik, {initialValues, validate, onSubmit, isSubmitted}, ContactFormInner
+  h Formik, {
+    initialValues,
+    validate,
+    onSubmit
+  }, (formikProps)->
+    h ContactFormInner, {
+      formikProps...
+      allowSubmit
+    }
 
 
 export {ContactForm}
