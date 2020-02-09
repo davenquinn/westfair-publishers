@@ -2,9 +2,10 @@ const withCSS = require('@zeit/next-css');
 const withStylus = require('@zeit/next-stylus');
 const withMDX = require('@next/mdx')();
 const withCoffeescript = require('next-coffeescript');
-const nowCfg = require('./now.json');
 
+// For production our env vars should be provided by ZEIT NOW
 if (process.env.NODE_ENV == 'development') {
+  const nowCfg = require('./now.json');
   require("dotenv").config()
 }
 
