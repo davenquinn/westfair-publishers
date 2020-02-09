@@ -3,14 +3,16 @@ const withStylus = require('@zeit/next-stylus');
 const withMDX = require('@next/mdx')();
 const withCoffeescript = require('next-coffeescript');
 
+let env = null
 // For production our env vars should be provided by ZEIT NOW
 if (process.env.NODE_ENV == 'development') {
   require("dotenv").config()
+  // Assemble environment from process environment
+  const keys = ["API_KEY", "DOMAIN", "EMAIL_TO", "EMAIL_FROM"]
+  env = Object.fromEntries(keys.map(k=> [k, process.env[k]]));
 }
 
-// Assemble environment from process environment
-const keys = ["API_KEY", "DOMAIN", "EMAIL_TO", "EMAIL_FROM"]
-env = Object.fromEntries(keys.map(k=> [k, process.env[k]]));
+
 
 const baseCfg = {
   cssModules: true,
