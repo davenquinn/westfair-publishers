@@ -2,7 +2,9 @@
 /*
 Load env vars from local `.env` file
 in current directory (they can also
-be available on the system)
+be available on the system) and
+transfer into ZEIT NOW secrets to
+be available on the server.
 */
 require("dotenv").config()
 const {spawnSync} = require("child_process")
