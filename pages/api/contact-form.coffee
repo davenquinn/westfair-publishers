@@ -1,6 +1,7 @@
 import mailgun from 'mailgun-js'
 import h from 'react-hyperscript'
 import { Email, Item, Span, A, renderEmail } from 'react-html-email'
+import {serializeError} from 'serialize-error'
 
 fieldLabels = {
   name: "Name"
@@ -88,7 +89,7 @@ export default (req, res)->
     response = await api.messages().send(data)
     res.statusCode = 200
     res.end JSON.stringify({ success: true, response })
-  catch error
-    console.log(error)
+  catch err
+    error = serializeError(err)
     res.statusCode = 500
     res.end JSON.stringify({ success: false, error })
