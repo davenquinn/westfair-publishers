@@ -15,4 +15,12 @@ CoverImage = ->
     </p>
   </div>
 
-export {RearJacket, CoverImage}
+ByFirstLightCover = ->
+  <div className="cover-image side-content">
+    <img src="/assets/by-first-light-cover.png" alt="" />
+    <p className="caption">
+    The cover of <em>By First Light</em>
+    </p>
+  </div>
+
+export {RearJacket, CoverImage, ByFirstLightCover}

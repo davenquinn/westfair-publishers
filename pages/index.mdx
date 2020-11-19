@@ -1,21 +1,50 @@
-import {BasePage} from '../components/base-page'
-import {HolidayMessage} from '../components/holiday-message'
-import {Button} from 'evergreen-ui'
+import { BasePage } from "../components/base-page";
+import { HolidayMessage } from "../components/holiday-message";
+import { Button } from "evergreen-ui";
+import styles from "../styles/main.styl";
+import Link from "next/link";
 
 <div className="gift-message">
-<h2>For a family gift...give the gift of family!</h2>
+<h2>For a family gift … give the gift of a family history!</h2>
 
-<img src="/assets/gifts.png" alt="asset-gifts" width={600}></img>
+<img src="/assets/baldauf-leinfelder.png" alt="asset-gifts" width={600}></img>
 
-<h2>Narratives for 19 generations, wrapped up in 7 centuries of ancestors.</h2>
-
-<h5>These cousins will be found in the unique
-   family history, <em>Always With Spirit</em>.</h5>
-
-
-<Button is="a" href="/about" appearance="primary" intent="primary">Learn more</Button>
+<h2>
+  Narratives for 19 generations, wrapped up in over 5 centuries of ancestors and
+  cousins, will be found in these unique family histories:
+</h2>
 
 </div>
 
+<div className={styles["books-overview"]}>
 
-export default BasePage
+<div className={styles["book"]}>
+  <h2 className="book-title">By First Light</h2>
+  <h3>A Chronicle of Baldauf Cousins</h3>
+  <p>
+    Baldauf, Klingshirn, Leinfelder, Smith, Kuchenrither, Kramer, Schaefer,
+    Siedel, Murray, Wensink, Borgelt, Wolke, Forster, Feron, Edwards, Eshman,
+    Carlin
+  </p>
+  <Link href="/by-first-light">
+    <a className={styles["link-button"]}>Learn more</a>
+  </Link>
+</div>
+
+<div className={styles["book"]}>
+  <h2 className="book-title">Always With Spirit</h2>
+  <h3>A Leinfelder Legacy</h3>
+  <p>
+    Leinfelder, Klingshirn, Minch, Loescher, Wensink, Bowman, Bruder, Forster,
+    Berner, Becks, DeChant, Smith, Eifel, DeFratis, Eckhardt, McCartan, Murray,
+    Thomasson, Pawul
+  </p>
+  <Link href="/always-with-spirit">
+    <a className={styles["link-button"]}>Learn more</a>
+  </Link>
+
+</div>
+
+</div>
+
+export default BasePage;

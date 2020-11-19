@@ -1,17 +1,31 @@
+main_blue=#006fdb
+
 *
   box-sizing: border-box
   font-family: 'EB Garamond', Garamond, 'Times New Roman', serif
   font-size 18px
 
-a
-  &:visited
-    color #0b5c9f
+.link-button
+  display block
+  padding 0.2em 1em
+  border 2px solid main_blue
+  border-radius 6px
+  margin-bottom 0.5em
+  font-style: italic;
+  color main_blue;
+  cursor: pointer;
+  &:hover
+    background-color lighten(main_blue, 90%)
+  &:global(.active)
+    background-color #64a4ef
+    color white
+
+a:visited
+  color #0b5c9f
 
 p,ul,ol
   line-height 1.5
-  font-size 20px
-
-main_blue=#006fdb
+  //font-size 20px
 
 h2
   font-size 1.5rem
@@ -19,6 +33,15 @@ h2
 
 h3,h4,h5,h6
   color main_blue
+
+:global(span.lead-in)
+  color main_blue
+  font-weight 600
+
+:global(.highlight)
+  color #ff0053
+  font-weight 600
+  font-style italic
 
 img
   max-width 100%
@@ -93,6 +116,17 @@ ol
     .family-connection
       margin 1em -1em
 
+:global
+  h2.book-title
+    text-transform: uppercase
+    margin-bottom 0
+    margin-top 10px
+    font-size 2em
+  h3.book-subtitle
+    margin-top 0
+    font-style italic
+    font-size 1.2em
+
 
 header
   margin-bottom 1em
@@ -101,27 +135,16 @@ header
   h1.site-title
     font-size 3em
     color main_blue
-    text-transform uppercase
     margin-bottom 0px
-    margin-top 0px
-    text-align center
+    margin-top 3px
   nav ul
     list-style-type none
     padding-left 0
     margin-bottom -0.5em
     margin-right -1em
-    margin-top 0.8em
-    a
+    margin-top 0.6em
+    a.link-button
       margin-right 1em
-      display block
-      padding 0.2em 1em
-      border 2px solid main_blue
-      border-radius 6px
-      margin-bottom 0.5em
-      font-style: italic;
-    :global(a.active)
-      background-color #64a4ef
-      color white
   .left
     height 9em
     margin-top -0.5em
@@ -147,6 +170,15 @@ div.wrap
   div.main
     flex-grow 1
 
+.books-overview
+  display flex
+  flex-direction row
+  margin 0 -1em
+  .book
+    margin 0 1em
+    .link-button
+      display inline-block
+      margin 0 auto
 
 
 @media screen and (min-width: 600px)
