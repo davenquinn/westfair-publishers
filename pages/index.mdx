@@ -19,29 +19,27 @@ import Link from "next/link";
 <div className={styles["books-overview"]}>
 
 <div className={styles["book"]}>
-  <h3>By First Light</h3>
-  <h4>A Chronicle of Baldauf Cousins</h4>
-
-<p>
-  Baldauf, Klingshirn, Leinfelder, Smith, Kuchenrither, Kramer, Schaefer,
-  Siedel, Murray, Wensink, Borgelt, Wolke, Forster, Feron, Edwards, Eshman,
-  Carlin
-</p>
-<Link href="/about">
-  <a className={styles["link-button"]}>Learn more</a>
-</Link>
-
+  <h2 className="book-title">By First Light</h2>
+  <h3>A Chronicle of Baldauf Cousins</h3>
+  <p>
+    Baldauf, Klingshirn, Leinfelder, Smith, Kuchenrither, Kramer, Schaefer,
+    Siedel, Murray, Wensink, Borgelt, Wolke, Forster, Feron, Edwards, Eshman,
+    Carlin
+  </p>
+  <Link href="/by-first-light">
+    <a className={styles["link-button"]}>Learn more</a>
+  </Link>
 </div>
 
 <div className="book">
-  <h3>Always With Spirit</h3>
-  <h4>A Leinfelder Legacy</h4>
+  <h2 className="book-title">Always With Spirit</h2>
+  <h3>A Leinfelder Legacy</h3>
   <p>
     Leinfelder, Klingshirn, Minch, Loescher, Wensink, Bowman, Bruder, Forster,
     Berner, Becks, DeChant, Smith, Eifel, DeFratis, Eckhardt, McCartan, Murray,
     Thomasson, Pawul
   </p>
-  <Link href="/about">
+  <Link href="/always-with-spirit">
     <a className={styles["link-button"]}>Learn more</a>
   </Link>
 

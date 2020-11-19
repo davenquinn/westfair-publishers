@@ -8,7 +8,7 @@ BasePage = (props)->
   h 'div.page', rest, [
     h Helmet, [
       <meta charset="utf-8" />
-      <title>Westfair Publishers — Always With Spirit</title>
+      <title>Westfair Publishers</title>
       <link href="https://fonts.googleapis.com/css?family=EB+Garamond&display=swap" rel="stylesheet" />
     ]
     h 'div.wrap', [
@@ -20,7 +20,7 @@ BasePage = (props)->
           }
         ]
         h 'div.right', [
-          h SiteTitle, "Always With Spirit"
+          h SiteTitle, "Westfair Publishers"
           h Nav
         ]
       ]
