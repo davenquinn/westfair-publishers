@@ -27,7 +27,7 @@ Nav = ->
     h 'ul', links.map ({ key, href, label }) ->
       h 'li', {key}, [
         h ActiveLink, {href}, [
-          h 'a', label
+          h 'a.link-button', label
         ]
       ]
   ]

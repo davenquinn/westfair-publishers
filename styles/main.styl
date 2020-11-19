@@ -3,6 +3,14 @@
   font-family: 'EB Garamond', Garamond, 'Times New Roman', serif
   font-size 18px
 
+.link-button
+  display block
+  padding 0.2em 1em
+  border 2px solid main_blue
+  border-radius 6px
+  margin-bottom 0.5em
+  font-style: italic;
+
 a
   &:visited
     color #0b5c9f
@@ -111,14 +119,8 @@ header
     margin-bottom -0.5em
     margin-right -1em
     margin-top 0.8em
-    a
+    a.link-button
       margin-right 1em
-      display block
-      padding 0.2em 1em
-      border 2px solid main_blue
-      border-radius 6px
-      margin-bottom 0.5em
-      font-style: italic;
     :global(a.active)
       background-color #64a4ef
       color white
@@ -147,6 +149,15 @@ div.wrap
   div.main
     flex-grow 1
 
+.books-overview
+  display flex
+  flex-direction row
+  margin 0 -1em
+  .book
+    margin 0 1em
+    a.link-button
+      display block
+      margin 0 auto
 
 
 @media screen and (min-width: 600px)
