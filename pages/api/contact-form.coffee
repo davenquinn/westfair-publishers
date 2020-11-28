@@ -16,7 +16,7 @@ B = (props)-> h Span, {fontWeight: 'bold', props...}
 EmailTemplate = (props)->
   {title, data} = props
 
-  {grandparentName,
+  {grandmotherName, grandfatherName,
   familyConnectionDescription,
   familyConnection, rest...} = data
 
@@ -41,12 +41,14 @@ EmailTemplate = (props)->
     h Item
     h Item, {align:"center"}, [
       h Span, {fontSize: 20}, [
-        "Family connection"
+        "Family connection: #{familyConnection}"
       ]
     ]
     h Item, [
-      h B, grandparentName
-      h Span, " – #{familyConnection}"
+      h B, grandmotherName
+    ]
+    h Item, [
+      h B, grandfatherName
     ]
     h Item, [
       h B, "More information: "

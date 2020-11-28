@@ -40,6 +40,13 @@ ContactFormInner = (props)->
   console.log props.isValid, props.allowSubmit
 
   <Form className="contact-form">
+    <SegmentedField
+      name="book"
+      options={["Always with Spirit", "By First Light"]}
+    />
+    <div>
+      { props.values.book == "Always with Spirit" ? "$59.00 + $7.85 shipping and handling" : "$77.70 + $14.30 shipping and handling" }
+    </div>
     <Field as={TextInput}
       label="Full name"
       placeholder="Enter your full name"
@@ -77,14 +84,18 @@ ContactFormInner = (props)->
         name="familyConnection"
         options={["Grandmother", "Grandfather"]}
       />
-      <div className={if fc? then "control shown" else "control hidden"}>
-        <Field as={TextInput}
-          label="#{fc or "Grandmother"} name"
-          required
-          name="grandparentName"
-          placeholder={"Enter your #{fc or "Grandmother"}'s name"}
-        />
-      </div>
+      <Field as={TextInput}
+        label="Grandmother name (including maiden name)"
+        required={fc=="Grandmother"}
+        name="grandmotherName"
+        placeholder={"Enter your Grandmother's name"}
+      />
+      <Field as={TextInput}
+        label="Grandfather name"
+        required={fc=="Grandfather"}
+        name="grandfatherName"
+        placeholder={"Enter your Grandfather's name"}
+      />
       <Field as={TextInput}
         label="Further description (optional)"
         name="familyConnectionDescription"
@@ -103,8 +114,10 @@ ContactForm = (props)->
   initialValues = {
     name: ""
     email: ""
+    book: "By First Light"
     phoneNumber: ""
-    grandparentName: ""
+    grandmotherName: ""
+    grandfatherName: ""
     familyConnectionDescription: ""
     familyConnection: "Grandmother"
     numCopies: 1
