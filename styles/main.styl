@@ -5,7 +5,6 @@ link_button_base()
   border 2px solid main_blue
   border-radius 6px
   margin-bottom 0.5em
-  font-style: italic;
   color main_blue;
   cursor: pointer;
 
@@ -20,14 +19,23 @@ body
 .link-button
   display block
   link_button_base()
+  &:visited
+    color main_blue
+  &.book
+    font-style: italic;
+    font-weight 600
   &:hover
     background-color lighten(main_blue, 90%)
   &:global(.active)
     background-color #64a4ef
     color white
 
+a
+  color #ff0053
+
 a:visited
-  color #0b5c9f
+  color darken(#ff0053,10%)
+  // #0b5c9f
 
 p,ul,ol
   line-height 1.5
@@ -38,6 +46,9 @@ h2
   color main_blue
 
 h3,h4,h5,h6
+  color main_blue
+
+strong, b
   color main_blue
 
 :global(span.lead-in)
@@ -85,7 +96,7 @@ ol,ul
     border-radius 6px
     padding 0.5em 1em
     transition: visibility 0.5s, height 0.5s linear
-    text-align center
+    text-align left
     .message-body
       align-items center
       .image-container
@@ -116,7 +127,6 @@ ol,ul
         min-width: 150px
   .contact-form
     line-height: 1
-    padding 0 1em
     .family-connection
       margin 1em -1em
 

@@ -5,10 +5,10 @@ import classNames from 'classnames'
 import h from '../styles'
 
 links = [
-  { href: '/always-with-spirit', label: 'Always With Spirit'},
-  { href: '/by-first-light', label: 'By First Light'},
+  { href: '/always-with-spirit', label: 'Always With Spirit', className: "book" },
+  { href: '/by-first-light', label: 'By First Light', className: "book" },
   { href: '/how-to-order', label: 'How to order' },
-  { href: '/purchase-request', label: 'Purchase request' },
+  { href: '/contact', label: 'Contact' },
 ].map (link)->
   link.key = "nav-link-#{link.href}-#{link.label}"
   return link
@@ -25,10 +25,11 @@ ActiveLink = ({children, ...props }) ->
 
 Nav = ->
   h 'nav', [
-    h 'ul', links.map ({ key, href, label }) ->
+    h 'ul', links.map ({ key, href, label, className }) ->
+      className ?= ""
       h 'li', {key}, [
         h ActiveLink, {href}, [
-          h 'a.link-button', label
+          h 'a.link-button', {className}, label
         ]
       ]
   ]

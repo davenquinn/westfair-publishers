@@ -17,7 +17,7 @@ CoverImage = ->
 
 ByFirstLightCover = ->
   <div className="cover-image side-content">
-    <img src="/assets/by-first-light-cover.png" alt="" />
+    <img src="/assets/by-first-light-cover.jpg" alt="" />
     <p className="caption">
     The cover of <em>By First Light</em>
     </p>
