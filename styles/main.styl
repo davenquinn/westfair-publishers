@@ -1,12 +1,6 @@
 main_blue=#006fdb
 
-*
-  box-sizing: border-box
-  font-family: 'EB Garamond', Garamond, 'Times New Roman', serif
-  font-size 18px
-
-.link-button
-  display block
+link_button_base()
   padding 0.2em 1em
   border 2px solid main_blue
   border-radius 6px
@@ -14,6 +8,18 @@ main_blue=#006fdb
   font-style: italic;
   color main_blue;
   cursor: pointer;
+
+
+*
+  box-sizing: border-box
+  font-family: 'EB Garamond', Garamond, 'Times New Roman', serif
+
+body
+  font-size 18px
+
+.link-button
+  display block
+  link_button_base()
   &:hover
     background-color lighten(main_blue, 90%)
   &:global(.active)
@@ -26,9 +32,9 @@ a:visited
 p,ul,ol
   line-height 1.5
   //font-size 20px
+  margin 0.5em 0 0.75em
 
 h2
-  font-size 1.5rem
   color main_blue
 
 h3,h4,h5,h6
@@ -46,9 +52,8 @@ h3,h4,h5,h6
 img
   max-width 100%
 
-ol
+ol,ul
   display block
-  overflow hidden
   padding-left: 1.5em
 
 :global
@@ -81,7 +86,6 @@ ol
     padding 0.5em 1em
     transition: visibility 0.5s, height 0.5s linear
     text-align center
-    clearfix: after
     .message-body
       align-items center
       .image-container
@@ -112,7 +116,7 @@ ol
         min-width: 150px
   .contact-form
     line-height: 1
-    margin 0 1em
+    padding 0 1em
     .family-connection
       margin 1em -1em
 
@@ -169,6 +173,9 @@ div.wrap
   min-height 100vh
   div.main
     flex-grow 1
+    display flex
+    flex-direction row
+    position relative
 
 .books-overview
   display flex
@@ -185,14 +192,17 @@ div.wrap
   :global
     .side-content
       margin-right 2em
+      min-width 300px
       float left
       width 35%
       display: block
     .purchase-request-form
-      max-width 60%
-      float left
+      position relative
+      width 100%
+      form
+        width 100%
       input
-        max-width 100
+        max-width 100%
 
   footer
     div.right
@@ -224,3 +234,25 @@ div.wrap
     max-width: 52em
     margin: 1em auto
     padding: 0 1em
+
+:global(.errorPage)
+  margin 0 auto
+  font-size:24px
+  h1
+    display:inline-block
+    border-right:1px solid rgba(0, 0, 0,.3)
+    margin:0
+    margin-right:20px
+    padding:10px 23px 10px 0
+    font-weight:500
+    vertical-align:middle
+  &>div
+    display:inline-block
+    text-align:left
+    vertical-align:middle
+  h2
+    font-size:20px
+    font-weight:normal;
+    margin:0;
+    padding:0
+    width 200px
