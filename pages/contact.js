@@ -1,20 +1,25 @@
 import { BasePage } from "../components/base-page";
 import { ContactForm } from "../components/contact-form";
-import { CoverImage } from "../components/images";
+import { CoverImage, ByFirstLightCover} from "../components/images";
 import {useState} from "react"
 
 export default function ContactPage() {
 
-  const [book, setBook] = useState("Always with Spirit");
+  const [book, setBook] = useState("By First Light");
+
+  //const book = "Always with Spirit";
 
   return <BasePage>
-    <CoverImage />
+    { book == "Always with Spirit" ? <CoverImage /> : null }
+    { book == "By First Light" ? <ByFirstLightCover /> : null }
     <div className="purchase-request-form">
       <p>
-      Use this form to contact us to request to purchase either of our in-print titles,
+      Use this form to request to purchase either of our in-print titles,
       or with questions and comments. Pricing information can be
       found on the <a href="/how-to-order">How to order</a> page.
+      You can also find us at 440-937-2766 between noon and 6 pm Eastern time.
       </p>
+      <h2>Purchase request form</h2>
       <ContactForm book={book} setBook={setBook} />
     </div>
   </BasePage>

@@ -1,4 +1,4 @@
-main_blue=#006fdb
+main_blue=rgb(0,111,219) // From Lois and Mary Anne
 
 link_button_base()
   padding 0.2em 1em
@@ -27,7 +27,7 @@ body
   &:hover
     background-color lighten(main_blue, 90%)
   &:global(.active)
-    background-color #64a4ef
+    background-color lighten(main_blue, 40%)
     color white
 
 a
@@ -87,9 +87,8 @@ ol,ul
     width 100%
 
   .side-content
-    margin-bottom 1em
-    margin-top 1em
-    display none
+    max-width 35%
+    margin 1em auto 2em
 
   .holiday-message
     border: 3px solid lighten(#ff0053, 90%)
@@ -128,7 +127,11 @@ ol,ul
   .contact-form
     line-height: 1
     .family-connection
-      margin 1em -1em
+      margin 1em 0
+    :global(.large)
+      label
+        font-size 1em
+        font-style italic
 
 :global
   h2.book-title
@@ -181,11 +184,6 @@ div.wrap
   display flex
   flex-direction column
   min-height 100vh
-  div.main
-    flex-grow 1
-    display flex
-    flex-direction row
-    position relative
 
 .books-overview
   display flex
@@ -197,13 +195,20 @@ div.wrap
       display inline-block
       margin 0 auto
 
+:global(.giftCard)
+  margin 0 1em
+  color #888
+  font-size 0.9em
+  margin-top 3em
+  max-width 18em
+  font-style italic
 
 @media screen and (min-width: 600px)
   :global
     .side-content
       margin-right 2em
+      margin-left 0
       min-width 300px
-      float left
       width 35%
       display: block
     .purchase-request-form
@@ -214,18 +219,22 @@ div.wrap
       input
         max-width 100%
 
+  div.main
+    flex-grow 1
+    display flex
+    flex-direction row
+    position relative
+
   footer
-    div.right
-      max-width 30em
+    :global(.right)
+      flex-grow 1
     display flex
     flex-direction row
     margin-right -2em
     justify-content: space-between
     &>div
-      min-width 20em
+      max-width 30em
       margin-right 2em
-      &:first-child
-        flex-grow 1
 
   header
     display flex

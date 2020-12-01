@@ -22,11 +22,14 @@ LabeledTextArea = (props)->
   </div>
 
 SegmentedField = (props)->
-  {options, name} = props
+  {options, name, className} = props
   [field, meta, helpers] = useField(props)
   {value, onChange} = field
 
+  className ?= ""
+
   h SegmentedControl, {
+    className,
     options: options.map (d)->{value: d, label: d}
     field...
     onChange: helpers.setValue
@@ -37,11 +40,11 @@ TextInput = (props)->
 
 ContactFormInner = (props)->
   fc = props.values.familyConnection
-  console.log props.isValid, props.allowSubmit
 
   <Form className="contact-form">
     <SegmentedField
       name="book"
+      className="large"
       options={["Always with Spirit", "By First Light"]}
     />
     <Field as={TextInput}
@@ -107,11 +110,11 @@ ContactFormInner = (props)->
     </Card>
   </Form>
 
-ContactForm = (props)->
+ContactForm = ({book = "By First Light", setBook})->
   initialValues = {
     name: ""
     email: ""
-    book: "By First Light"
+    book
     phoneNumber: ""
     grandmotherName: ""
     grandfatherName: ""
@@ -126,6 +129,9 @@ ContactForm = (props)->
   validate = (d)->
     errors = {}
     hasErrors = false
+    if d.book != book and setBook?
+      setBook(d.book)
+
     for field in ['name', 'email', "grandparentName"]
       if d[field] == ""
         errors[field] = 'required'
