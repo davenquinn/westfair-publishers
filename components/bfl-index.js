@@ -1,9 +1,15 @@
 import data from "./index-data";
 import h from "../styles";
 import { nest } from "d3-collection";
-import { TextInput } from "evergreen-ui";
 import { useState, useMemo } from "react";
 import Fuse from "fuse.js";
+import dynamic from "next/dynamic";
+
+// Need to dynamically import the form to make sure that styles are resolved correctly
+const SearchInput = dynamic(
+  () => import("evergreen-ui").then((d) => d.SearchInput),
+  { ssr: false }
+);
 
 const newData = data.map((d) => {
   return { firstName: d[0], lastName: d[1] };
@@ -59,7 +65,7 @@ function ByFirstLightIndex() {
   return h("div.bfl-index", [
     h("div.bfl-index-header", [
       h("h3", "Search the index: "),
-      h(TextInput, {
+      h(SearchInput, {
         className: "bfl-index-search",
         onChange(e) {
           setSearchString(e.target.value);
