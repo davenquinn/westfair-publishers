@@ -278,3 +278,25 @@ div.wrap
 
 div.bfl-index-content
   display block
+  dt
+    display block
+    clear both
+    margin-top 1em
+    font-weight: bold
+  dd
+    break-inside: avoid
+  .names
+    column-count: 2
+
+div.bfl-index-header
+  display flex
+  flex-flow row wrap
+  align-items: baseline
+  h3
+    margin-right 1em
+  &>div
+    flex-grow 1
+
+@media screen and  (min-width: 52em)
+  div.bfl-index-content .names
+    column-count: 4
