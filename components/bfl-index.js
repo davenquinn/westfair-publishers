@@ -1,8 +1,8 @@
 import data from "./index-data";
 import h from "../styles";
 import { nest } from "d3-collection";
-import { SearchInput } from "evergreen-ui";
-import { useState, useRef, useMemo, useCallback } from "react";
+import { TextInput } from "evergreen-ui";
+import { useState, useMemo } from "react";
 import Fuse from "fuse.js";
 
 const newData = data.map((d) => {
@@ -59,7 +59,7 @@ function ByFirstLightIndex() {
   return h("div.bfl-index", [
     h("div.bfl-index-header", [
       h("h3", "Search the index: "),
-      h(SearchInput, {
+      h(TextInput, {
         className: "bfl-index-search",
         onChange(e) {
           setSearchString(e.target.value);
