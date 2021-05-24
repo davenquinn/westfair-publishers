@@ -71,7 +71,6 @@ ContactFormInner = (props)->
         className="numCopies"
         label="Copies requested"
         required
-        width={50}
         name="numCopies"
         placeholder="#"
       />
