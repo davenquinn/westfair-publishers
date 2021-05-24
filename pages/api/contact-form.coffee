@@ -58,8 +58,8 @@ EmailTemplate = (props)->
 
 
 api = mailgun {
-  apiKey: process.env.API_KEY,
-  domain: process.env.DOMAIN
+  apiKey: process.env.MAILGUN_API_KEY,
+  domain: process.env.MAILGUN_DOMAIN
 }
 
 export default (req, res)->
@@ -81,8 +81,8 @@ export default (req, res)->
   html = renderEmail email
   # Handle a successful request
   data = {
-    from: process.env.EMAIL_FROM,
-    to: process.env.EMAIL_TO,
+    from: process.env.MAILGUN_EMAIL_FROM,
+    to: process.env.MAILGUN_EMAIL_TO,
     subject: name,
     html
   }
