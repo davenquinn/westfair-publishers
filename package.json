@@ -1,6 +1,6 @@
 {
   "name": "westfair-publishers",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "",
   "main": "index.js",
   "private": true,
@@ -9,8 +9,7 @@
     "dev": "next dev",
     "build": "next build",
     "dev:prod": "now dev",
-    "start": "next start",
-    "sync-env": "scripts/apply-secrets.js"
+    "start": "next start"
   },
   "author": "Daven Quinn",
   "license": "ISC",
@@ -22,7 +21,7 @@
     "formik": "^2.1.4",
     "fuse.js": "^6.4.6",
     "mailgun-js": "^0.22.0",
-    "next": "^9.1.2-canary.2",
+    "next": "^9.4.0",
     "react": "^16.10.2",
     "react-dom": "^16.10.2",
     "react-helmet": "^5.2.1",
