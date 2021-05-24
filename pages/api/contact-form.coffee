@@ -92,6 +92,7 @@ export default (req, res)->
     res.statusCode = 200
     res.end JSON.stringify({ success: true, response })
   catch err
+    console.error(err)
     error = serializeError(err)
     res.statusCode = 500
     res.end JSON.stringify({ success: false, error })
