@@ -9,8 +9,7 @@
     "dev": "next dev",
     "build": "next build",
     "dev:prod": "now dev",
-    "start": "next start",
-    "sync-env": "scripts/apply-secrets.js"
+    "start": "next start"
   },
   "author": "Daven Quinn",
   "license": "ISC",
