@@ -1,7 +1,9 @@
-import data from "./index-data";
+import bflData from "./bfl-index-data";
+import awsData from "./aws-index-data";
 import h from "../styles";
 import { nest } from "d3-collection";
 import { useState, useMemo } from "react";
+import { LinkButton } from "./nav";
 import Fuse from "fuse.js";
 import dynamic from "next/dynamic";
 
@@ -11,10 +13,6 @@ const SearchInput = dynamic(
   { ssr: false }
 );
 
-const newData = data.map((d) => {
-  return { firstName: d[0], lastName: d[1] };
-});
-
 const getSearchResults = (fuse, searchString) => {
   let res = fuse.search(searchString);
   if (searchString.length >= 3) {
@@ -23,20 +21,20 @@ const getSearchResults = (fuse, searchString) => {
   return res.map((d) => d.item);
 };
 
-function BFLIndexContent({ searchString = null }) {
+function BookIndexContent({ data, searchString = null }) {
   const fuse = useMemo(() => {
-    return new Fuse(newData, {
+    return new Fuse(data, {
       keys: [
         { name: "firstName", weight: 1 },
         { name: "lastName", weight: 1 },
       ],
       includeScore: true,
     });
-  }, [newData]);
+  }, [data]);
 
   const filteredData =
     searchString == null || searchString == ""
-      ? newData
+      ? data
       : getSearchResults(fuse, searchString);
 
   const nested = nest()
@@ -60,21 +58,45 @@ function BFLIndexContent({ searchString = null }) {
   );
 }
 
-function ByFirstLightIndex() {
+function BookIndex({ data, id, learnMoreLink }) {
+  const newData = data.map((d) => {
+    return { firstName: d[0], lastName: d[1] };
+  });
+
   const [searchString, setSearchString] = useState(null);
-  return h("div.bfl-index", [
-    h("div.bfl-index-header", [
+  return h(`div.index.${id}-index`, [
+    h(`div.index-header.${id}-index-header`, [
       h("h3", "Search the index: "),
       h(SearchInput, {
-        className: "bfl-index-search",
+        className: `index-search ${id}-index-search`,
         onChange(e) {
           setSearchString(e.target.value);
         },
         searchString,
       }),
+      h("div.expander"),
+      h.if(learnMoreLink != null)(LinkButton, { href: learnMoreLink }),
     ]),
-    h("div.bfl-index-content", [h(BFLIndexContent, { searchString })]),
+    h(`div.index-content.${id}-index-content`, [
+      h(BookIndexContent, { searchString, data: newData }),
+    ]),
   ]);
 }
 
-export { ByFirstLightIndex };
+function ByFirstLightIndex() {
+  return h(BookIndex, {
+    id: "bfl",
+    data: bflData,
+    learnMoreLink: "/by-first-light",
+  });
+}
+
+function AWSIndex() {
+  return h(BookIndex, {
+    id: "aws",
+    data: awsData,
+    learnMoreLink: "/always-with-spirit",
+  });
+}
+
+export { ByFirstLightIndex, AWSIndex };

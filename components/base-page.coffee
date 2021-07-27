@@ -1,6 +1,6 @@
 import h from '../styles'
 import {Helmet} from 'react-helmet'
-import {SiteTitle, Nav} from './nav'
+import {SiteTitle, Nav, BaseLink} from './nav'
 import Footer from './footer.mdx'
 
 BasePage = (props)->
@@ -14,10 +14,12 @@ BasePage = (props)->
     h 'div.wrap', [
       h 'header', [
         h 'div.left', [
-          h 'img', {
-            src: "/assets/always-with-spirit-rear-jacket.svg"
-            alt: "rear-jacket-artwork"
-          }
+          h BaseLink, [
+            h 'img', {
+              src: "/assets/always-with-spirit-rear-jacket.svg"
+              alt: "rear-jacket-artwork"
+            }
+          ]
         ]
         h 'div.right', [
           h SiteTitle, "Westfair Publishers"

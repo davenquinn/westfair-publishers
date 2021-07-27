@@ -19,6 +19,7 @@ body
 .link-button
   display block
   link_button_base()
+  text-decoration: none
   &:visited
     color main_blue
   &.book
@@ -276,7 +277,7 @@ div.wrap
     padding:0
     width 200px
 
-div.bfl-index-content
+div.index-content
   display block
   dt
     display block
@@ -288,7 +289,7 @@ div.bfl-index-content
   .names
     column-count: 2
 
-div.bfl-index-header
+div.index-header
   display flex
   flex-flow row wrap
   align-items: baseline
@@ -298,5 +299,5 @@ div.bfl-index-header
     flex-grow 1
 
 @media screen and  (min-width: 52em)
-  div.bfl-index-content .names
+  div.index-content .names
     column-count: 4
