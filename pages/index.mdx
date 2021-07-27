@@ -1,8 +1,7 @@
 import { BasePage } from "../components/base-page";
 import { HolidayMessage } from "../components/holiday-message";
-import { Button } from "evergreen-ui";
+import { LinkButton } from "../components/nav";
 import styles from "../styles/main.styl";
-import Link from "next/link";
 
 <div>
 
@@ -24,27 +23,24 @@ import Link from "next/link";
   <h2 className="book-title">By First Light</h2>
   <h3>A Chronicle of Baldauf Cousins</h3>
   <p>
-    Baldauf, Klingshirn, Leinfelder, Smith, Kuchenrither, Kramer, Schaefer,
-    Siedel, Murray, Wensink, Borgelt, Wolke, Forster, Feron, Edwards, Eshman,
-    Carlin
+    Including Baldauf, Klingshirn, Leinfelder, Smith, Kuchenrither, Kramer,
+    Schaefer, Siedel, Murray, Wensink, Borgelt, Wolke, Forster, Feron, Edwards,
+    Eshman, and <a href="/by-first-light/names">many more</a> cousins and
+    descendants.
   </p>
-  <Link href="/by-first-light">
-    <a className={styles["link-button"]}>Learn more</a>
-  </Link>
+  <LinkButton href="/by-first-light" />
 </div>
 
 <div className={styles["book"]}>
   <h2 className="book-title">Always With Spirit</h2>
   <h3>A Leinfelder Legacy</h3>
   <p>
-    Leinfelder, Klingshirn, Minch, Loescher, Wensink, Bowman, Bruder, Forster,
-    Berner, Becks, DeChant, Smith, Eifel, DeFratis, Eckhardt, McCartan, Murray,
-    Thomasson, Pawul
+    Including Leinfelder, Klingshirn, Minch, Loescher, Wensink, Bowman, Bruder,
+    Forster, Berner, Becks, DeChant, Smith, Eifel, DeFratis, Eckhardt, McCartan,
+    Murray, Thomasson, Pawul, and{" "}
+    <a href="/always-with-spirit/names">many more</a> cousins and descendants.
   </p>
-  <Link href="/always-with-spirit">
-    <a className={styles["link-button"]}>Learn more</a>
-  </Link>
-
+  <LinkButton href="/always-with-spirit" />
 </div>
 
 </div>

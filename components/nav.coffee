@@ -1,6 +1,7 @@
 import React, {Children} from 'react'
 import Link from 'next/link'
 import { useRouter } from 'next/router'
+import { Button } from "evergreen-ui";
 import classNames from 'classnames'
 import h from '../styles'
 
@@ -34,12 +35,19 @@ Nav = ->
       ]
   ]
 
-SiteTitle = (props)->
+BaseLink = (props)->
   h Link, {href: "/"}, [
-    h 'a', [
-      h 'h1.site-title', props
-    ]
+    h 'a', props
   ]
 
+SiteTitle = (props)->
+  h BaseLink, [
+    h 'h1.site-title', props
+  ]
 
-export {SiteTitle, Nav}
+LinkButton = ({href, children = "Learn more"})->
+  h Link, {href}, [
+    h "a.link-button", children
+  ]
+
+export {BaseLink, SiteTitle, Nav, LinkButton}

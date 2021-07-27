@@ -3,6 +3,7 @@ import awsData from "./aws-index-data";
 import h from "../styles";
 import { nest } from "d3-collection";
 import { useState, useMemo } from "react";
+import { LinkButton } from "./nav";
 import Fuse from "fuse.js";
 import dynamic from "next/dynamic";
 
@@ -57,7 +58,7 @@ function BookIndexContent({ data, searchString = null }) {
   );
 }
 
-function BookIndex({ data, id }) {
+function BookIndex({ data, id, learnMoreLink }) {
   const newData = data.map((d) => {
     return { firstName: d[0], lastName: d[1] };
   });
@@ -73,19 +74,29 @@ function BookIndex({ data, id }) {
         },
         searchString,
       }),
+      h("div.expander"),
+      h.if(learnMoreLink != null)(LinkButton, { href: learnMoreLink }),
     ]),
-    h(`div.${id}-index-content.index-content`, [
+    h(`div.index-content.${id}-index-content`, [
       h(BookIndexContent, { searchString, data: newData }),
     ]),
   ]);
 }
 
 function ByFirstLightIndex() {
-  return h(BookIndex, { id: "bfl", data: bflData });
+  return h(BookIndex, {
+    id: "bfl",
+    data: bflData,
+    learnMoreLink: "/by-first-light",
+  });
 }
 
 function AWSIndex() {
-  return h(BookIndex, { id: "aws", data: awsData });
+  return h(BookIndex, {
+    id: "aws",
+    data: awsData,
+    learnMoreLink: "/always-with-spirit",
+  });
 }
 
-export { ByFirstLightIndex };
+export { ByFirstLightIndex, AWSIndex };

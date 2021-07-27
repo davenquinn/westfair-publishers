@@ -1542,3 +1542,5 @@ const data = [
   ["Gregory J.", "ZELL"],
   ["Baby Boy.", "ZIEGLER"],
 ];
+
+export default data;
