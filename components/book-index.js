@@ -33,7 +33,7 @@ function BookIndexContent({ data, searchString = null }) {
 
   const filteredData =
     searchString == null || searchString == ""
-      ? newData
+      ? data
       : getSearchResults(fuse, searchString);
 
   const nested = nest()
