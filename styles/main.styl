@@ -225,7 +225,9 @@ div.wrap
     display flex
     flex-direction row
     position relative
-
+    &>:last-child
+      flex-grow 1
+      
   footer
     :global(.right)
       flex-grow 1
